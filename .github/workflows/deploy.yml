@@ -1,7 +1,9 @@
 name: Deploy Python project to Azure Function App
 
 on:
-  [push]
+  push:
+    branches:
+      - main
 
 env:
   AZURE_FUNCTIONAPP_NAME: '250112-functest'   # set this to your function app name on Azure
@@ -29,7 +31,7 @@ jobs:
         popd
 
     - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v2
+      uses: Azure/functions-action@v1
       id: fa
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
